@@ -79,10 +79,7 @@ function toString(uri: URI): string {
 type MakeArgs = {origin: string, path: string, query: Query};
 
 function make({origin, path, query}: MakeArgs): URI {
-  let uri = parse(origin);
-  uri = setPath(uri, path);
-  uri = addQueryParams(uri, query);
-  return uri;
+  return addQueryParams(setPath(parse(origin), path), query);
 }
 
 export default {parse, safeParse, addQueryParams, setPath, toString, make};
